@@ -79,6 +79,7 @@ export class ProductCard extends HTMLElement {
             const key = `${self.dataset.type}(${self.dataset.material}): ${self.dataset.size}, ${self.dataset.sort} сорт, гост ${self.dataset.gost} (${self.#units})`
 
             window.app.cart.update(key, "amount", (v) => v + self.#delta, getDefault);
+            window.app.inCart+= self.#delta;
         });
         const unitsSelect = /**@type {HTMLSelectElement }*/(template.querySelector("select"));
         this.#units = unitsSelect.value;

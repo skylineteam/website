@@ -19,10 +19,21 @@ const cartList = /**@type {HTMLUListElement} */(document.getElementById("cart-li
 const cartBtn = /**@type {HTMLButtonElement} */(document.getElementById("cart-btn"));
 const cartTotal = /**@type {HTMLSpanElement} */(document.querySelector("#cart .total"));
 
-const app = /**@type {const}*/({
+const cartCounterKey = Symbol("cart counter");
+
+const app = ({
+    /**@readonly */
     cart: /**@type {Cart<string, {amount: number, price: number}>} */(new Cart({
         "amount"(val) {return val <= 0}
-    }))
+    })),
+    [cartCounterKey]: /**@type {number}*/(0),
+    get inCart(){
+        return this[cartCounterKey];
+    },
+    set inCart(value){
+        this[cartCounterKey] = value;
+        cartBtn.style.setProperty("--value", value == 0? "" : `${value}`);
+    }
 });
 /**@typedef { typeof app} App */
 Object.defineProperty(window, "app", {
@@ -72,10 +83,11 @@ function renderCart() {
             cartTotal.dataset.value = `${globalTotal}`
             cartTotal.innerText = currency.format(globalTotal);
 
-            window.app.cart.set(key, "amount", value);
+            const oldVal = window.app.cart.set(key, "amount", value);
+            window.app.inCart += (value - oldVal);
         });
         btn.addEventListener("click", function(e) {
-            window.app.cart.delete(key);
+            window.app.inCart -= (window.app.cart.delete(key)?.amount ?? 0);
             li.remove();
         });
 
@@ -131,7 +143,6 @@ for (const {GOST, material: materials, props: props_list, sort } of data.items) 
 
     const orderEmplace = /**@type {HTMLButtonElement} */(document.querySelector("#order .emplace"));
     orderEmplace.addEventListener("click", function(e) {
-        console.log(1);
         const data = {
             person: {},
             order: {}
@@ -147,7 +158,7 @@ for (const {GOST, material: materials, props: props_list, sort } of data.items) 
             data.order[key] = value;
         }
         for (const key in data.order) {
-            app.cart.delete(key);
+            window.app.inCart -= (app.cart.delete(key)?.amount ?? 0);
         }
         fetch("https://skylineteam-api.onrender.com/order/create", {
             method: "POST",

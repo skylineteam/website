@@ -35,11 +35,13 @@ export class Cart extends EventTarget{
                 throw new Error("")
             }
         }
+        const old = container[key];
         container[key] = value;
         if (key in this.#observers && this.#observers[key](value)) {
             this.#map.delete(id);
             this.dispatchEvent(new CustomEvent("delete", {detail: {key: id}}))
         }
+        return old;
     }
 
     /** 
@@ -53,8 +55,10 @@ export class Cart extends EventTarget{
      * @param { K } id 
      */
     delete(id) {
-        const value = this.#map.delete(id);
-        this.dispatchEvent(new CustomEvent("delete", {detail: {key: id}}))
+        const value = this.#map.get(id) ?? null;
+        if (this.#map.delete(id)) {
+            this.dispatchEvent(new CustomEvent("delete", {detail: {key: id, value: value}}))
+        }
         return value;
     }
 
