@@ -32,7 +32,7 @@ const app = ({
     },
     set inCart(value){
         this[cartCounterKey] = value;
-        cartBtn.style.setProperty("--value", value == 0? "" : `${value}`);
+        cartBtn.style.setProperty("--value", value == 0? "" : `"${value}"`);
     }
 });
 /**@typedef { typeof app} App */
