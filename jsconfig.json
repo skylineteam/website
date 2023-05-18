@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "checkJs": true,
+        "target": "ES2022",
+        "moduleResolution": "nodenext",
+        "resolveJsonModule": true,
+        "module": "ESNext",
+        "baseUrl": ".",
+        "paths": {
+            "#currency": ["./src/utilities/currency.js"]
+        }
+    },
+    "exclude": [
+        "client/node_modules",
+        "**/node_modules/*"
+    ]
+}

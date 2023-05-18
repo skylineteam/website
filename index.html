@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="importmap">
+        {
+          "imports": {
+            "#currency": "./src/utilities/currency.js"
+          }
+        }
+      </script>
+
+    <link rel="preload" href="/placeholder.png" as="image"/>
+
+    <link rel="stylesheet" href="/style.css">
+    <script src="/app.js" type="module"></script>
+</head>
+<body>
+
+    <div class="viewport">
+
+        <section class="body">
+            
+            <header class="header">
+                <h1 style="margin-right: auto;">genial'noye nazvanie</h1>
+
+                <button id="cart-btn">
+                    <svg><use href="#icon-cart"></use></svg>
+                </button>
+            </header>
+
+            <div class="content">
+                <h2>nashe govno:</h2>
+                <div class="catalog">
+
+
+                </div>
+            </div>
+    
+
+            <footer class="footer-wrapper">
+                <div class="footer">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime officia necessitatibus nobis, possimus assumenda facere ea hic incidunt pariatur quas voluptas aperiam architecto excepturi. Dicta assumenda modi aut commodi velit?
+                </div>
+            </footer>
+        </section>
+    
+    </div>
+
+    <dialog id="modal">
+        <layout-viewport data-active="cart">
+            <section data-name="cart" id="cart">
+                <h2>Корзина:</h2>
+                <ul id="cart-list"></ul>
+                <div class="controlls">
+                    <button class="close btn" autofocus>закрыть</button>
+                    <button class="order btn">оформить заказ</button>
+                    <span class="total"></span>
+                </div>
+            </section>
+            <section data-name="order" id="order">
+                <h2>Заказ:</h2>
+                <div class="form">
+                    <div class="items">
+                        <label>
+                            <span>Ф.И.О.</span>
+                            <input name="name" type="text">
+                        </label>
+                        <label>
+                            <span>телефон</span>
+                            <input name="phone" type="tel">
+                        </label>
+                    </div>
+                </div>
+                <div class="controlls">
+                    <button class="close btn" autofocus>закрыть</button>
+                    <button class="emplace btn">заказать</button>
+                </div>
+            </section>
+        </layout-viewport>
+    </layout-viewport>
+    </dialog>
+
+    
+    <svg style="display: none;">
+
+        <symbol id="icon-cart" viewBox="0 96 960 960">
+            <path d="M286.788 975Q257 975 236 953.788q-21-21.213-21-51Q215 873 236.212 852q21.213-21 51-21Q317 831 338 852.212q21 21.213 21 51Q359 933 337.788 954q-21.213 21-51 21Zm400 0Q657 975 636 953.788q-21-21.213-21-51Q615 873 636.212 852q21.213-21 51-21Q717 831 738 852.212q21 21.213 21 51Q759 933 737.788 954q-21.213 21-51 21ZM235 315l110 228h288l125-228H235Zm-30-60h589.074q22.964 0 34.945 21Q841 297 829 318L694 561q-11 19-28.559 30.5Q647.881 603 627 603H324l-56 104h491v60H277q-42 0-60.5-28t.5-63l64-118-152-322H51v-60h117l37 79Zm140 288h288-288Z"/>
+        </symbol>
+
+        <symbol id="icon-delete" viewBox="0 96 960 960">
+            <path d="M261 936q-24.75 0-42.375-17.625T201 876V306h-41v-60h188v-30h264v30h188v60h-41v570q0 24-18 42t-42 18H261Zm438-630H261v570h438V306ZM367 790h60V391h-60v399Zm166 0h60V391h-60v399ZM261 306v570-570Z"/>
+        </symbol>
+
+    </svg>
+
+</body>
+</html>

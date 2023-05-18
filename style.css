@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+:root {
+    --max-width: 920px;
+
+    --color-1: #FFFFFF;
+    --color-2: #F1F1F1;
+    --color-3: #667761;
+
+    --font-color-1: #F1F1F1;
+    --font-color-2: #392F5A;
+    --color-4: #545E56;
+    --color-5: #917C78;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: 'Open Sans', sans-serif;
+    color: var(--font-color-2);
+}
+
+.viewport {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    background-color: var(--color-2);
+}
+
+.body {
+    min-height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.header {
+    color: var(--font-color-1);
+    background-color: var(--color-3);
+    height: 4em;
+    padding: 0 1em 0 1em;
+    position: sticky;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+}
+
+.header button {
+    background-color: transparent;
+    /*background-color: var(--color-4);*/
+    margin: 0;
+    padding: .5em;
+    border-radius: .25em;
+    border: 0;
+    fill: var(--font-color-1);
+    color: inherit;
+
+    position: relative;
+}
+
+.header button::after {
+    content: var(--value, "");
+    color: inherit;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    translate: 30% -30%;
+}
+
+.header button svg {
+    height: 2em;
+    aspect-ratio: 1/1;
+}
+
+.footer-wrapper {
+    color: var(--font-color-1);
+    background-color: var(--color-3);
+}
+
+.footer {
+    max-width: var(--max-width);
+    margin: auto;
+
+    padding: 1em;
+}
+
+.content {
+    flex-grow: 1;
+
+    min-height: 100vh;
+
+    --padding: 1em;
+    
+    margin-right: auto;
+    margin-left: auto;
+    
+    background-color: var(--color-1);
+    
+    max-width: var(--max-width);
+    width: calc(100% - (var(--padding) * 2));
+
+    padding: var(--padding);
+}
+
+.catalog {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 1em;
+}
+
+#modal {
+    --padding: 1.5em;
+    height: 40em;
+    max-height: 80%;
+    max-width: var(--max-width);
+    padding: 0;
+    border: none;
+    padding-left: var(--padding);
+    padding-right: var(--padding);
+    background: transparent;
+
+    width: auto;
+}
+
+#modal>layout-viewport {
+    --border: 1px;
+    background: var(--color-1);
+    border: var(--border) solid var(--color-3);
+
+    height: calc(100% - (var(--border, 0px) * 2));
+    width: calc(100% - (var(--border, 0px) * 2));
+
+}
+
+#modal>layout-viewport>section {
+    --padding: 1em;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#order .items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: min-content;
+    gap: 0.5em;
+}
+#order .items label {
+    display: contents;
+}
+#order .form {
+    flex-grow: 1;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+#order .controlls {
+    display: flex;
+    gap: 1em;
+}
+
+#cart-list {
+    flex-grow: 1;
+    overflow-y: auto;
+    list-style: none;
+    margin: 0;
+    padding: 0 1em;
+}
+
+#cart-list>li {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+
+    min-height: 2em;
+}
+
+#cart-list>li>span {
+    margin-right: auto;
+}
+
+#cart-list>li>input {
+    width: 3em;
+    height: 1.5em;
+}
+
+
+#cart button.delete {
+    font-size: inherit;
+    margin: 0;
+    padding: 0.1em;
+    height: 1.5em;
+    width: 1.5em;
+    flex-shrink: 0;
+
+    border: 0px;
+    background-color: var(--color-3);
+    border-radius: 0.25em;
+    fill: var(--font-color-1);
+}
+
+#cart button.delete svg {
+    height: 100%;
+    width: 100%;
+}
+
+#cart .controlls {
+    display: flex;
+    gap: 1em;
+}
+
+#cart .total {
+    margin-left: auto;
+}
+
+.btn {
+    border: 0px;
+    background-color: var(--color-3);
+    padding: 0.5em;
+    border-radius: 0.25em;
+    color: var(--font-color-1);
+    white-space: nowrap;
+}
