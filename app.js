@@ -149,7 +149,7 @@ for (const {GOST, material: materials, props: props_list, sort } of data.items) 
         for (const key in data.order) {
             app.cart.delete(key);
         }
-        fetch("http://skylineteam-api.onrender.com/order/create", {
+        fetch("https://skylineteam-api.onrender.com/order/create", {
             method: "POST",
             body: JSON.stringify(data)
         }).then((data)=>data.json()).then(resp => {
